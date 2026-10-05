@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Evaluative Paragraph Guide: Film Reviews</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600&family=Work+Sans:wght@400;600&display=swap">
+<style>
+:root{--bg:#f4f6f8;--card:#fff;--ink:#1c2430;--mute:#5b6675;--line:#d5dbe3;
+--pos:#d9f2df;--posb:#2e8b4a;--neg:#dbe8fb;--negb:#2f6bc4;--con:#e7dcf7;--conb:#7a4cc2;--ovr:#fff1b8;
+box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12171d;--card:#1b222b;--ink:#e8edf3;--mute:#9aa6b5;--line:#2f3945;--pos:#1d3a27;--neg:#1b2f4d;--con:#35264f;--ovr:#4a3f10}}
+:root[data-theme="dark"]{--bg:#12171d;--card:#1b222b;--ink:#e8edf3;--mute:#9aa6b5;--line:#2f3945;--pos:#1d3a27;--neg:#1b2f4d;--con:#35264f;--ovr:#4a3f10}
+html{scroll-padding-top:150px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Work Sans",system-ui,sans-serif}
+#bar{position:sticky;top:0;z-index:10;background:var(--ink);color:var(--bg);padding:calc(8px + env(safe-area-inset-top,0px)) 16px 10px}
+#bar .in{max-width:760px;margin:0 auto}
+#bar b{font-weight:600}
+#bar .obj{font-size:.95rem}
+#bar .sc{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px;font-size:.85rem}
+.chip{font:inherit;font-size:.85rem;padding:3px 10px;border-radius:99px;border:1px solid var(--bg);background:transparent;color:var(--bg);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ovr);color:#1c2430;border-color:var(--ovr)}
+.chip[aria-pressed="true"]::before{content:"✔ "}
+main{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1,h2{font-family:Literata,Georgia,serif;line-height:1.25;margin:0}
+h1{font-size:1.9rem}h2{font-size:1.25rem}
+p{margin:.4em 0}.lead{color:var(--mute)}
+.film{display:flex;gap:10px;align-items:center;margin:18px 0;flex-wrap:wrap}
+input,textarea{width:100%;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 10px}
+textarea{resize:vertical;min-height:58px}
+input:focus,textarea:focus,button:focus-visible{outline:3px solid var(--conb);outline-offset:1px}
+label{display:block;font-size:.85rem;font-weight:600;margin:10px 0 3px}
+.box{border-left:8px solid var(--c);border-radius:8px;padding:6px 16px 16px;margin:16px 0;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+.box h2{background:var(--bgc);margin:10px -16px 0;padding:8px 16px}
+.pos{--c:var(--posb);--bgc:var(--pos)}.neg{--c:var(--negb);--bgc:var(--neg)}.con{--c:var(--conb);--bgc:var(--con)}
+.fix{margin:0;padding:8px 0 0;color:var(--mute);font-size:.9rem}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+button{font:inherit;font-weight:600;border:1px solid var(--ink);background:var(--card);color:var(--ink);border-radius:6px;padding:6px 14px;cursor:pointer}
+button.main{background:var(--ink);color:var(--bg)}
+.tabs{display:flex;gap:8px;margin-top:12px}
+.tabs button[aria-expanded="true"]{background:var(--c,var(--ink));color:#fff;border-color:var(--c,var(--ink))}
+.panel{margin-top:8px;padding:10px 14px;border-radius:8px;background:var(--bgc,var(--bg))}
+.panel ul{margin:.3em 0;padding-left:1.2em}
+.words{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.words button{font-weight:400;font-size:.8rem;padding:1px 9px;border-radius:99px;border-color:var(--line)}
+.msg{margin-top:10px;padding:10px 14px;border-radius:8px;background:var(--card);border:1px solid var(--line)}
+.msg ul{margin:.3em 0;padding-left:1.2em}.ok{color:var(--posb);font-weight:600}
+mark{padding:1px 3px;border-radius:3px;color:inherit}
+.g{background:var(--pos)}.b{background:var(--neg)}.p{background:var(--con)}.y{background:var(--ovr)}
+.model{font-family:Literata,Georgia,serif;line-height:1.9}
+.check{padding:0}.check li{list-style:none;margin:.2em 0}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div id="bar"><div class="in">
+<div class="obj"><b>Lesson objective:</b> I can write an evaluative paragraph using judgements, details and effects.</div>
+<div class="sc"><span id="now"></span><span id="chips" style="display:contents"></span></div>
+</div></div>
+<main>
+<h1>Build an evaluative paragraph</h1>
+<p class="lead">Plan four judgements about a film, link them with contrast, then finish with an overall verdict. Stuck? Use <b>Hint</b> or <b>Model answer</b> in each box.</p>
+
+<section data-sec="film"><div class="film"><label for="film" style="margin:0">Film title</label><input id="film" placeholder="e.g. Sonic the Hedgehog" style="max-width:340px"></div></section>
+<div id="boxes"></div>
+
+<section class="box con" data-sec="con">
+<h2>Connect and judge</h2>
+<label for="overall">Which viewers might enjoy it? Why?</label>
+<textarea id="overall" placeholder="Overall, the film may suit viewers who enjoy…"></textarea>
+<div class="words" id="ow"></div>
+<div class="tabs"><button data-p="oh" aria-expanded="false">Hint</button><button data-p="om" aria-expanded="false">Model answer</button></div>
+<div class="panel" id="oh" hidden>Name the <b>type of viewer</b> (families, action fans) and give a <b>reason</b> from your points. Then add “but it may not suit everyone”.</div>
+<div class="panel" id="om" hidden>Overall, the film may suit families who enjoy fast action and humour, but it may not suit everyone.</div>
+<p class="fix">Use a different point in each box.</p>
+</section>
+
+<div class="row"><button id="hintBtn">Hint</button><button id="checkBtn" class="main">Check my plan</button></div>
+<div id="hint" class="panel" hidden></div>
+<div id="result" class="msg" hidden aria-live="polite"></div>
+
+<section data-sec="write">
+<h2 style="margin-top:34px">Write your paragraph</h2>
+<p class="lead">Start from your notes, then rewrite in full sentences. Use “seems” and “may” to show these are your judgements, and link ideas with <b>also</b>, <b>however</b>, <b>although</b> and <b>overall</b>.</p>
+<div class="row"><button id="startBtn">Start my paragraph from my plan</button></div>
+<textarea id="draft" style="min-height:190px" aria-label="Your paragraph"></textarea>
+<ul class="check" id="dc"></ul>
+</section>
+
+<section data-sec="model">
+<h2 style="margin-top:34px">Model paragraph</h2>
+<div class="row"><button id="modelBtn" aria-expanded="false">Show / hide model and explanation</button></div>
+<div id="model" hidden>
+<p><mark class="g">Green</mark> = two positives. <mark class="b">Blue</mark> = two negatives. <mark class="p">Purple</mark> = contrast. <mark class="y">Yellow</mark> = overall judgement.</p>
+<p class="model"><mark class="g">The action seems thrilling because Sonic’s speed turns every chase scene into a race, making viewers want to keep watching. Sonic also seems lovable because he is lonely yet cheeky, encouraging viewers to care about him.</mark> <mark class="p">However,</mark> <mark class="b">some jokes may be too childish because they rely on silly slapstick, which could bore older viewers.</mark> <mark class="p">Although</mark> <mark class="b">the fast pace creates excitement, rapid cuts may make some scenes harder to follow for viewers who prefer a slower story.</mark> <mark class="y">Overall, the film may suit families who enjoy fast action and humour, but it may not suit everyone.</mark></p>
+<ul>
+<li><b>Positive 1:</b> thrilling action → speedy chase scenes → excitement.</li>
+<li><b>Positive 2:</b> lovable character → lonely but cheeky → affection.</li>
+<li><b>Negative 1:</b> childish humour → silly slapstick → boredom for older viewers.</li>
+<li><b>Negative 2:</b> hard-to-follow scenes → rapid cuts → confusion for some viewers.</li>
+</ul>
+<p>“Seems” and “may” show these are your opinions, not facts. The second negative is a possible drawback of the same feature praised in the first positive: the pace that creates excitement can also confuse.</p>
+</div>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const D=[
+{k:"pos",s:"p0",t:"Positive 1 · The plot",ph:["e.g. gripping, fast-paced","e.g. a chase scene through the city","e.g. keep watching"],
+ w:["gripping","thrilling","fast-paced","original","exciting"],
+ h:"Pick one strong adjective for the plot. Then find one <b>scene</b> that proves it, and say how a viewer <b>feels</b>. Starter: “The plot seems ___ because ___, making viewers ___.”",
+ m:["thrilling","Sonic’s speed turns every chase scene into a race","makes viewers want to keep watching"]},
+{k:"pos",s:"p1",t:"Positive 2 · The main character",ph:["e.g. lovable, brave","e.g. he is lonely but cheeky","e.g. care about him"],
+ w:["lovable","inspiring","funny","believable","brave"],
+ h:"Choose a different point from Positive 1: a <b>character</b> or the <b>acting</b>. What does he or she do or say? Starter: “___ also seems ___ because ___, encouraging viewers to ___.”",
+ m:["lovable","he is lonely yet cheeky","encourages viewers to care about him"]},
+{k:"neg",s:"n0",t:"Negative 1 · A weak point",ph:["e.g. childish humour","e.g. silly slapstick jokes","e.g. may bore older viewers"],
+ w:["childish","repetitive","upsetting","slow","predictable"],
+ h:"Think about <b>who</b> might not enjoy it: older viewers? people who like gentler films? Use “may” or “could”. Starter: “___ may be too ___ because ___, which could ___.”",
+ m:["too childish","some jokes rely on silly slapstick","could bore older viewers"]},
+{k:"neg",s:"n1",t:"Negative 2 · Another weak point",ph:["e.g. hard to follow","e.g. rapid cuts in action scenes","e.g. may confuse some viewers"],
+ w:["confusing","rushed","unrealistic","messy","over-long"],
+ h:"Try a drawback of something you praised (pace, surprises, action). Starter: “Although ___, ___ may make it harder for viewers who prefer ___.”",
+ m:["harder to follow","rapid cuts in the fast action scenes","may confuse viewers who prefer a slower story"]}];
+const FX=["making viewers…","encouraging viewers to…","which could…","so viewers may…"];
+const C={film:["Title added"],p0:["Precise judgement","Detail from film","Effect on viewer"],p1:["Different point","Detail from film","Effect on viewer"],
+n0:["Different point","Detail from film","Says who it affects"],n1:["Different point","Detail from film","Says who it affects"],
+con:["Which viewers?","Why?"],write:["seems / may","However / Although","Overall"],model:["Match the colours"]};
+const N={film:"Choosing a film",p0:"Positive 1",p1:"Positive 2",n0:"Negative 1",n1:"Negative 2",con:"Connect and judge",write:"Writing",model:"Model paragraph"};
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const done=JSON.parse(store.get("evp:done")||"{}");
+D.forEach((d,i)=>{$("boxes").insertAdjacentHTML("beforeend",`<section class="box ${d.k}" data-sec="${d.s}"><h2>${d.t}</h2>
+<label for="j${i}">My judgement</label><input id="j${i}" placeholder="${d.ph[0]}"><div class="words" data-t="j${i}">${d.w.map(w=>`<button>${w}</button>`).join("")}</div>
+<label for="d${i}">A detail from the film</label><input id="d${i}" placeholder="${d.ph[1]}">
+<label for="e${i}">Effect on a viewer</label><input id="e${i}" placeholder="${d.ph[2]}"><div class="words" data-t="e${i}">${FX.map(w=>`<button>${w}</button>`).join("")}</div>
+<div class="tabs"><button data-p="h${i}" aria-expanded="false">Hint</button><button data-p="m${i}" aria-expanded="false">Model answer</button></div>
+<div class="panel" id="h${i}" hidden>${d.h}</div>
+<div class="panel" id="m${i}" hidden><b>Judgement:</b> ${d.m[0]}<br><b>Detail:</b> ${d.m[1]}<br><b>Effect:</b> ${d.m[2]}<br><small>(Sonic the Hedgehog example. Write your own about your film.)</small></div></section>`)});
+$("ow").innerHTML=["suit families","suit fans of action","may not suit everyone","because"].map(w=>`<button>${w}</button>`).join("");
+$("ow").dataset.t="overall";
+document.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+ const w=b.closest(".words");if(w){const f=$(w.dataset.t);f.value=(f.value?f.value+" ":"")+b.textContent;f.dispatchEvent(new Event("input"));f.focus();return}
+ if(b.dataset.p){const p=$(b.dataset.p),open=p.hidden;b.parentElement.querySelectorAll("button").forEach(x=>{x.setAttribute("aria-expanded","false");$(x.dataset.p).hidden=true});if(open){p.hidden=false;b.setAttribute("aria-expanded","true")}}});
+const ids=["film","overall","draft"];for(let i=0;i<4;i++)ids.push("j"+i,"d"+i,"e"+i);
+ids.forEach(id=>{const v=store.get("evp:"+id);if(v)$(id).value=v;$(id).addEventListener("input",()=>{store.set("evp:"+id,$(id).value);if(id==="draft")dcheck()})});
+let cur="film";
+function chips(){$("now").innerHTML="<b>Now: "+N[cur]+". Success criteria:</b>";
+ $("chips").innerHTML=C[cur].map((c,i)=>`<button class="chip" data-k="${cur}${i}" aria-pressed="${!!done[cur+i]}">${c}</button>`).join("")}
+$("chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;done[b.dataset.k]=!done[b.dataset.k];store.set("evp:done",JSON.stringify(done));b.setAttribute("aria-pressed",!!done[b.dataset.k])});
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting&&en.target.dataset.sec!==cur){cur=en.target.dataset.sec;chips()}}),{rootMargin:"-30% 0px -55% 0px"});
+document.querySelectorAll("[data-sec]").forEach(s=>io.observe(s));chips();
+const words=s=>s.trim().split(/\s+/).filter(Boolean);
+const norm=s=>new Set(s.toLowerCase().replace(/[^a-z\s]/g,"").split(/\s+/).filter(w=>w.length>3));
+function overlap(a,b){const A=norm(a),B=norm(b);if(!A.size||!B.size)return 0;let n=0;A.forEach(w=>B.has(w)&&n++);return n/Math.min(A.size,B.size)}
+const hints=["Use a different point in each box: plot, character, content, pacing, acting, soundtrack, effects.","A detail is something a viewer could point to: a scene, a line, a moment. Avoid “it was good”.","Effects: make viewers laugh, feel tense, lose interest, feel confused, admire the hero.","For negatives, say who might be affected: “viewers who prefer…”. It keeps your judgement fair."];
+let hi=0;
+$("hintBtn").onclick=()=>{const h=$("hint");h.hidden=false;h.textContent=hints[hi++%hints.length]};
+$("checkBtn").onclick=()=>{
+ const issues=[],nm=["Positive 1","Positive 2","Negative 1","Negative 2"];
+ for(let i=0;i<4;i++){const miss=[["j","judgement"],["d","detail"],["e","effect"]].filter(([p])=>words($(p+i).value).length<1).map(x=>x[1]);
+  if(miss.length)issues.push(`${nm[i]}: add a ${miss.join(", ")}.`);}
+ for(let a=0;a<4;a++)for(let b=a+1;b<4;b++){const x=$("j"+a).value+" "+$("d"+a).value,y=$("j"+b).value+" "+$("d"+b).value;
+  if(words(x).length>3&&words(y).length>3&&overlap(x,y)>=.6)issues.push(`${nm[a]} and ${nm[b]} look like the same point. Use a different point in each box.`)}
+ if(words($("overall").value).length<6)issues.push("Connect and judge: say which viewers might enjoy it and why.");
+ const r=$("result");r.hidden=false;
+ r.innerHTML=issues.length?`<b>Almost there. Fix these first:</b><ul>${issues.map(t=>`<li>${t}</li>`).join("")}</ul>`:`<span class="ok">Your plan has four different points and an overall verdict.</span> Now click “Start my paragraph from my plan”.`};
+const lc=s=>s.trim().replace(/^[A-Z](?=[a-z])/,m=>m.toLowerCase());
+$("startBtn").onclick=()=>{
+ const f=$("film").value.trim()||"The film",v=i=>lc($("j"+i).value)||"…",d=i=>lc($("d"+i).value)||"…",e=i=>lc($("e"+i).value)||"…";
+ const t=`${f} seems ${v(0)} because ${d(0)}, ${e(0)}. The main character also seems ${v(1)} because ${d(1)}, ${e(1)}. However, ${v(2)} may be a problem because ${d(2)}, ${e(2)}. Although ${v(3)} may add to the film, ${d(3)} might make it harder for some viewers: ${e(3)}. Overall, ${lc($("overall").value)||"…"}`;
+ if($("draft").value.trim()&&!confirm("Replace your current paragraph?"))return;
+ $("draft").value=t;store.set("evp:draft",t);dcheck()};
+function dcheck(){const t=$("draft").value,l=t.toLowerCase();
+ const c=[["Hedged language (seems / may / could / might)",/\b(seems|may|might|could|appears)\b/.test(l)],["Positives linked with “also”",/\balso\b/.test(l)],
+ ["Contrast with “however” or “although”",/\b(however|although)\b/.test(l)],["Overall judgement starting “Overall”",/\boverall\b/.test(l)],
+ ["Cause words (because / so / making)",/\b(because|so|making|which)\b/.test(l)],["At least 5 sentences",(t.match(/[.!?](\s|$)/g)||[]).length>=5]];
+ $("dc").innerHTML=t.trim()?c.map(([n,ok])=>`<li>${ok?"✅":"⬜"} ${n}</li>`).join(""):""}
+$("modelBtn").onclick=()=>{const m=$("model");m.hidden=!m.hidden;$("modelBtn").setAttribute("aria-expanded",!m.hidden)};
+dcheck();
+</script>
+</body>
+</html>
